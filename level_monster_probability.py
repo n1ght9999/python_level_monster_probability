@@ -10,7 +10,7 @@ monster_data = {
 }
 
 # player_level, monster_data 기반으로 몬스터 별 등장점수 구하기
-def Spawn_probability(player_level):
+def spawn_probability(player_level):
     # 각각의 몬스터의 등장 점수
     scores = {}
 
@@ -28,11 +28,11 @@ def Spawn_probability(player_level):
     
     return scores
 
-# wja 적용하기
-def Select_monster(player_level):
+#  적용하기
+def select_monster(player_level):
 
     # 등장 점수 가져오기
-    scores = Spawn_probability(player_level)
+    scores = spawn_probability(player_level)
 
     # 몬스터의 이름 리스트
     monster_name = list(scores.keys())
@@ -41,9 +41,9 @@ def Select_monster(player_level):
     monster_weights = list(scores.values())
 
     # 점수를 기반으로 몬스터 랜덤 결정
-    select_monster = random.choices(monster_name, weights = monster_weights, k = 1)
+    select_monster = random.choices(monster_name, weights = monster_weights, k = 1)[0]
     return select_monster
 
 # 실행
 level = 4
-print(Select_monster(level))
+print(select_monster(level))
